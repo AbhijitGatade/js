@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Name: <input type="text" id="name" /><br /><br />
+    About You: <textarea id="about"></textarea><br /><br />
+    Gender: <label><input type="radio" id="male" name="gender" /> Male</label>
+            <label><input type="radio" id="female" name="gender" /> FeMale</label><br /><br />
+    Hobbies <label><input type="checkbox" id="cricket"> Cricket </label>
+    <label><input type="checkbox" id="chess"> Chess </label>
+    <label><input type="checkbox" id="football"> Football </label><br /><br />
+    <button onclick="display()">Display</button><br /><br />
+    <div id="display"></div>
+
+    <script>
+        function display()
+        {
+            var name = document.getElementById("name").value;
+            var about = document.getElementById("about").value;
+            var gender = "";
+            if(document.getElementById("male").checked)
+                gender = "Male";
+            if(document.getElementById("female").checked)
+                gender = "Female";            
+            var hobbies = "";
+            if(document.getElementById("cricket").checked)
+                hobbies = "Cricket";
+            if(document.getElementById("chess").checked)
+                hobbies += (hobbies == "" ? "" : ", ") + "Chess";
+            if(document.getElementById("football").checked)
+                hobbies += (hobbies == "" ? "" : ", ") + "Football";
+
+            var str = "<b>Name : </b>" + name + "<br />";
+            str += "<b>About You : </b>" + about + "<br />";
+            str += "<b>Gender : </b>" + gender + "<br />";
+            str += "<b>Hobbies : </b>" + hobbies + "<br />";
+
+            document.getElementById("display").innerHTML = str;
+
+        }
+    </script>
+
+</body>
+</html>
