@@ -9,39 +9,47 @@
 <body>
     Name: <input type="text" id="name" /><br /><br />
     About You: <textarea id="about"></textarea><br /><br />
-    Gender: <label><input type="radio" id="male" name="gender" /> Male</label>
-            <label><input type="radio" id="female" name="gender" /> FeMale</label><br /><br />
-    Hobbies <label><input type="checkbox" id="cricket"> Cricket </label>
-    <label><input type="checkbox" id="chess"> Chess </label>
-    <label><input type="checkbox" id="football"> Football </label><br /><br />
+
+    Gender: <label><input type="radio" id="male" value="Male" name="gender" /> Male</label>
+            <label><input type="radio" id="female" value="Female" name="gender" /> Female</label>
+            <label><input type="radio" id="other" value="Other" name="gender" /> Other</label><br /><br />
+
+
+            
+    Hobbies <label><input type="checkbox" id="cricket" name="hobbies" value="Cricket" > Cricket </label>
+    <label><input type="checkbox" id="chess" name="hobbies" value="Chess"> Chess </label>
+    <label><input type="checkbox" id="football" name="hobbies" value="Football"> Football </label><br /><br />
     <button onclick="display()">Display</button><br /><br />
     <div id="display"></div>
 
     <script>
         function display()
         {
-            var name = document.getElementById("name").value;
-            var about = document.getElementById("about").value;
-            var gender = "";
-            if(document.getElementById("male").checked)
-                gender = "Male";
-            if(document.getElementById("female").checked)
-                gender = "Female";            
-            var hobbies = "";
-            if(document.getElementById("cricket").checked)
-                hobbies = "Cricket";
-            if(document.getElementById("chess").checked)
-                hobbies += (hobbies == "" ? "" : ", ") + "Chess";
-            if(document.getElementById("football").checked)
-                hobbies += (hobbies == "" ? "" : ", ") + "Football";
+            let name = document.getElementById("name").value;  
+            alert(name); 
+                    
+            let about = document.getElementById("about").value;  
+            alert(about);          
 
-            var str = "<b>Name : </b>" + name + "<br />";
-            str += "<b>About You : </b>" + about + "<br />";
-            str += "<b>Gender : </b>" + gender + "<br />";
-            str += "<b>Hobbies : </b>" + hobbies + "<br />";
+            let genders = document.getElementsByName("gender");
+          
+            for(let i = 0; i < genders.length; i++)
+            {
+                     if(genders[i].checked)
+                     alert(genders[i].value);
+             }
 
-            document.getElementById("display").innerHTML = str;
 
+            let hobbies = document.getElementsByName("hobbies");
+                
+            for(let i = 0; i < hobbies.length; i++)
+            {
+                if(hobbies[i].checked)
+                    alert(hobbies[i].value);
+            }
+
+
+           
         }
     </script>
 
