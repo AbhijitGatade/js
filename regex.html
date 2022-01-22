@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   
+    <label for="">Name* </label><label id="msgname" style="color: red; font-size: small;"></label><br>    
+    <input type="text" id="name"><br>
+    <label for="">Email* </label><label id="msgmail" style="color: red; font-size: small;"></label><br>    
+    <input type="email" id="mail"><br>
+    <label for="">Mobile No.* </label><label id="msgno" style="color: red; font-size: small;"></label><br>    
+    <input type="number" id="no"><br><br>
+
+    <button onclick="find()">Show</button>
+    <div id="mydiv"> </div>
+
+    <script>
+        function find()
+        {
+          var name=document.getElementById("name").value;
+          var mail=document.getElementById("mail").value;
+          var no=document.getElementById("no").value;
+
+          document.getElementById("msgname").innerHTML = "";
+          document.getElementById("msgmail").innerHTML = "";
+          document.getElementById("msgno").innerHTML = "";
+
+          if(name == "")
+          {
+              document.getElementById("msgname").innerHTML = "Enter your name.";
+              document.getElementById("name").focus();
+              return;
+          }
+          if(mail == "")
+          {
+              document.getElementById("msgmail").innerHTML = "Enter your email.";
+              document.getElementById("mail").focus();
+              return;
+          }
+          if(no == "")
+          {
+              document.getElementById("msgno").innerHTML = "Enter your mobile no.";
+              document.getElementById("no").focus();
+              return;
+          }
+
+          if(validateemail(mail) == false)
+          {
+                document.getElementById("msgmail").innerHTML = "Enter valid email.";
+              document.getElementById("mail").focus();
+              return;
+          }
+
+          if(validatemobileno(no) == false)
+          {
+            document.getElementById("msgno").innerHTML = "Enter valid mobile no.";
+              document.getElementById("no").focus();
+              return;
+          }
+          document.getElementById("mydiv").innerHTML= "Name: "+name+"<br />"+"Email: "+mail+"<br />"+"Mobile No: "+no+"<br />";
+        }
+
+        function validateemail(email)
+        {
+            var pattern = new RegExp(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/);
+            return pattern.test(email);
+        }
+
+        function validatemobileno(mobileno)
+        {
+            var pattern = new RegExp(/^(?:(?:\+|0{0,2})91(\s*[\-]\s*)?|[0]?)?[789]\d{9}$/);
+            return pattern.test(mobileno);
+        }
+        
+    </script>
+   
+</body>
+</html>
